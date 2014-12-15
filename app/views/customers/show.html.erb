@@ -1,6 +1,6 @@
 
 <p>Contact Information</p>
-<h2>Name: <%= @customer.name %></h2>
+<h1>Name = <%= @customer.name %></h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -10,18 +10,21 @@
 </p>
 
 
-
-
-<h3>Invoices for <%= @customer.name %> </h3>
+<h3>Invoices</h3>
 <table class="invoices">
   <tr>
     <th>S.N</th>
     <th>Total</th>
-    <th>Balance</th>
-    <th>Notes</th>
+    
   </tr>  
-  
+  <% @customer.invoices.each do |invoice| %>
+  <tr>
+    <td><%= link_to "#{invoice.id}", invoice %></td>
+    <td><%= number_to_currency invoice.total, unit: "Rs." %></td>
+    
+  </tr>
+  <% end %>
 </table>
-<br>
+
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'View All Customers', customers_path %>
