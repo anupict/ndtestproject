@@ -1,0 +1,27 @@
+
+<p>Contact Information</p>
+<h2>Name: <%= @customer.name %></h2>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email: </strong>
+  <%= @customer.email %>
+</p>
+
+
+
+
+<h3>Invoices for <%= @customer.name %> </h3>
+<table class="invoices">
+  <tr>
+    <th>S.N</th>
+    <th>Total</th>
+    <th>Balance</th>
+    <th>Notes</th>
+  </tr>  
+  
+</table>
+<br>
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'View All Customers', customers_path %>

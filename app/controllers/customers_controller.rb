@@ -15,6 +15,10 @@ class CustomersController < ApplicationController
 		 @customer = Customer.new(customer_params)
 	end
 
+	def edit
+	end
+	
+
 	private
 
 	def find_customer
