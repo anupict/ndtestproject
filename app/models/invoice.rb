@@ -15,6 +15,15 @@ class Invoice < ActiveRecord::Base
 		end
 
   	def total
-  		total =0
+  		
+    	items = self.invoice_items
+
+    	total = 0
+
+    	items.each { |item|
+      	total += InvoiceItem.find_by(id: item).price * item.qty
+	    }
+
+    total
   	end
 end
