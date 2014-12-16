@@ -1,6 +1,10 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
@@ -12,7 +16,68 @@
  *
  *= require_tree .
  *= require_self
+ 
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  margin: 3em 2em;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: .5em 1em;
+}
+
+th {
+  background-color: #ccc;
+}
+
+div.add-invoice-item {
+  margin: 2em 0;
+}
+
+table {
+  &.invoice-total {
+    margin-bottom: 2em;
+  }
+  &.invoices td {
+    &.id {
+      text-align: right;
+    }
+    &.customer-name {
+      text-align: left;
+    }
+    &.invoice-total {
+      text-align: right;
+    }
+  }
+  &.invoice-items {
+    margin: 2em 0;
+    td.item-qty {
+      text-align: right;
+    }
+  }
+}
+
+td {
+  &.item-price, &.item-total-price {
+    text-align: right;
+  }
+}
+
+table.invoice-items td.invoice-total {
+  text-align: right;
+}
+
+
+form div.actions.form-group {
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+

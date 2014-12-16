@@ -2,18 +2,19 @@ class InvoicesController < ApplicationController
 	before_action :find_invoice, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@invocie = Invoice.all
+		@invoice = Invoice.all
 	end
 
 	def show
 	end
 
 	def new
-		@invocie = Invoice.new
+		@invoice = Invoice.new
+		# @invoice.invoice_items.build
 	end
 
 	def create
-		 @invocie = Invoice.new(invocie_params)
+		 @invoice = Invoice.new(invoice_params)
 	end
 
 	def edit
@@ -22,11 +23,12 @@ class InvoicesController < ApplicationController
 
 	private
 
-	def find_invocie
-		 @invocie = Invocie.find(params[:id])
+	def find_invoice
+		 @invoice = Invoice.find(params[:id])
     end
 
     def invoice_params
-    	params.require(:invoice).permit(:id, :name, :email)
+    	params.require(:invoice).permit(:id, :customer_id,
+                                      invoice_items_attributes: [:id, :invoice_id, :description, :qty, :price, :_destroy])
     end
 end

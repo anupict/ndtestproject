@@ -1,1 +1,59 @@
-_form.html.erb
+<%= simple_form_for(@invoice) do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <div class="field form-group">
+    <%= f.label :customer_id %><br>
+    <%= select("invoice", "customer_id", Customer.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, { class: "form-control" }) %>
+  </div>
+
+ 
+  <!-- nested items form -->
+  <table class="invoice-items">
+    <thead>
+      <tr>
+      
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <%= f.simple_fields_for :invoice_items do |builder| %>
+        <div class="invoice-item-fields">
+          <%= render 'invoice_item_fields', f: builder %>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <div class="add-invoice-item"><%= link_to_add_association 'Add Item', f, :invoice_items, { class: 'btn btn-primary' } %></div>
+
+  <table class="invoice-total">
+    <tr>
+      <td><strong>Invoice Total: </strong></td>
+      <td>$<span class="total-amount"> - </span></td>
+    </tr>
+  </table>
+
+  
+
+  <div class="actions form-group">
+    <% submit_label = @invoice.new_record? ? "Create Invoice" : "Update Invoice" %>
+    <%= f.submit "#{submit_label}", class: "btn btn-success" %>
+  </div>
+<% end %>
