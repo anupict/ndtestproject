@@ -2,6 +2,7 @@ class InvoicesController < ApplicationController
 	before_action :find_invoice, only: [:show, :edit, :update, :destroy]
 
 	def index
+		@invocie = Invoice.all
 	end
 
 	def show
