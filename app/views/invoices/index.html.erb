@@ -21,7 +21,7 @@
     <tbody>
       <% @invoice.each do |invoice| %>
         <tr>
-          <td class="id"><%= link_to "#{invoice.id}", invoice %></td>
+          <td class="id"><%= link_to "#{invoice.invoicenum}", invoice %></td>
           <td class="customer-name"><%= link_to "#{invoice.customer.name}", invoice.customer %></td>
           <td class="invoice-total"><%= number_to_currency invoice.total, unit: "$" %></td>
           

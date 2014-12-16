@@ -5,3 +5,4 @@ class AddItemsToInvoiceItems < ActiveRecord::Migration
     add_column :invoice_items, :qty, :integer
   end
 end
+

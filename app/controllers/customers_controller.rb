@@ -22,6 +22,11 @@ class CustomersController < ApplicationController
 	def edit
 	end
 
+	def destroy
+         @customer.destroy
+        redirect_to @customer, notice: 'Customer was successfully deleted.'
+  	end
+
 
 	private
 
