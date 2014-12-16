@@ -1,6 +1,6 @@
 
 <p>Contact Information</p>
-<h1>Name = <%= @customer.name %></h1>
+<h1>Name:<%= @customer.name %></h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -13,13 +13,13 @@
 <h3>Invoices</h3>
 <table class="invoices">
   <tr>
-    <th>S.N</th>
+    <th>Invoice Number</th>
     <th>Total</th>
     
   </tr>  
   <% @customer.invoices.each do |invoice| %>
   <tr>
-    <td><%= link_to "#{invoice.id}", invoice %></td>
+    <td><%= link_to "#{invoice.invoicenum}", invoice %></td>
     <td><%= number_to_currency invoice.total, unit: "Rs." %></td>
     
   </tr>
