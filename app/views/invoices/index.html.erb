@@ -1,1 +1,44 @@
-index.html.erb
+<h1>Invoices</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="all-invoices invoice-tab">
+  <h3>All</h3>
+  <table class="invoices">
+    <thead>
+      <tr>
+        <th>Invoice #</th>
+        <th>Customer</th>
+        <th>Invoice Total</th>
+        
+        
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invoice.each do |invoice| %>
+        <tr>
+          <td class="id"><%= link_to "#{invoice.id}", invoice %></td>
+          <td class="customer-name"><%= link_to "#{invoice.customer.name}", invoice.customer %></td>
+          <td class="invoice-total"><%= number_to_currency invoice.total, unit: "$" %></td>
+          
+          
+          <td class="invoice-actions">
+            <%= link_to 'View', invoice %>
+            |
+            <%= link_to 'Edit', edit_invoice_path(invoice) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<h3>Options</h3>
+<ul>
+  <li><%= link_to "Create Invoice", new_invoice_path %></li>
+</ul>

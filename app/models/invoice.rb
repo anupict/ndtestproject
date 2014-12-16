@@ -4,4 +4,10 @@ class Invoice < ActiveRecord::Base
 
   	has_many :invoice_items, inverse_of: :invoice, dependent: :destroy
   	accepts_nested_attributes_for :invoice_items, allow_destroy: true 
+
+  	
+
+  	def total
+  		total =0
+  	end
 end

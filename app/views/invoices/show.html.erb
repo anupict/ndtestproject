@@ -1,1 +1,57 @@
-show.html.erb
+<h1>Invoice</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Invoice #: </strong>
+  <%= @invoice.id %>
+</p>
+
+
+
+<p>
+  <strong>Customer: </strong>
+  <%= link_to "#{@invoice.customer.name}", @invoice.customer %>
+</p>
+
+
+
+<table class="invoice-items" >
+  <thead>
+    <tr>
+      <th>#</th>
+      
+      <th>Description</th>
+      <th>Qty</th>
+      <th>Item Price</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoice.invoice_items.each_with_index do |item, index| %>
+      <tr>
+        <td class="item-id"><%= index+1 %></td>
+        
+        <td class=""><%= item.description %></td>
+        <td class="item-qty"><%= item.qty %></td>
+        <td class="item-price"><%= number_to_currency item.price, unit: "$" %></td>
+        <td class="item-total-price"><%= number_to_currency (item.price * item.qty), unit: "$" %></td>
+      </tr>
+    <% end %>
+      
+      <tr>
+        <td colspan="3"></td>
+        <td>Invoice Total:</td>
+        <td class="invoice-total"><%= number_to_currency @invoice.total, unit: "$" %></td>
+      </tr>
+      
+      <tr>
+        
+  </tbody>
+</table>
+
+<%= link_to 'Edit Invoice', edit_invoice_path(@invoice) %> |
+<%= link_to 'Delete Invoice', @invoice, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'View All Invoices', invoices_path %>

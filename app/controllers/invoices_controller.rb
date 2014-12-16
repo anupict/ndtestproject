@@ -15,11 +15,26 @@ class InvoicesController < ApplicationController
 
 	def create
 		 @invoice = Invoice.new(invoice_params)
+		 @invoice.save
+		 redirect_to @invoice
 	end
 
 	def edit
 	end
 	
+
+	def update
+        if @invoice.update(invoice_params)
+        redirect_to @invoice, notice: 'Invoice was successfully updated.'
+      	else
+        render :edit
+      	end
+  	end
+
+  	def destroy
+         @invoice.destroy
+        redirect_to @invoice, notice: 'Invoice was successfully deleted.'
+  	end
 
 	private
 
