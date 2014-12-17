@@ -5,10 +5,10 @@ PDFKit.configure do |config|
   	config.wkhtmltopdf = 'C:/pdf/wkhtmltopdf.exe'
   elsif RUBY_PLATFORM =~ /linux/
     wkhtmltopdf_executable = 'wkhtmltopdf-amd64'
-    config.wkhtmltopdf = Rails.root.join('vendor', 'bin', wkhtmltopdf_executable).to_s
+    config.wkhtmltopdf = Rails.root.join('bin', wkhtmltopdf_executable).to_s
   elsif RUBY_PLATFORM =~ /darwin/
     wkhtmltopdf_executable = 'wkhtmltopdf-osx'
-    config.wkhtmltopdf = Rails.root.join('vendor', 'bin', wkhtmltopdf_executable).to_s
+    config.wkhtmltopdf = Rails.root.join('bin', wkhtmltopdf_executable).to_s
   else
     config.wkhtmltopdf = 'C:/pdf/wkhtmltopdf.exe'
   end	
