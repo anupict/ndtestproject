@@ -15,6 +15,10 @@ class Invoice < ActiveRecord::Base
     	#self.invoicenum = invoice_id + 1000
 		end
 
+    def self.search(search)
+    where("invoicenum LIKE ?", "%#{search}%") 
+    end
+
   	def total
   		
     	items = self.invoice_items

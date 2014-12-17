@@ -3,6 +3,11 @@ class InvoicesController < ApplicationController
 
 	def index
 		@invoice = Invoice.all
+ 		 if params[:search]
+   		 @invoice = Invoice.search(params[:search]).order("created_at DESC")
+  		else
+   		 @invoice = Invoice.all.order('created_at DESC')
+  		end
 	end
 
 	def show
