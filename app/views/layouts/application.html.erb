@@ -6,9 +6,36 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+
 <body>
 
-<%= yield %>
+ <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span class="navbar-brand" href="#">NDTestAPP</span>
+      </div>
+      <div id="main-menu" class="">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Index", root_path %></li>
+          <li><%= link_to "Customers", customers_path %></li>
+          <li><%= link_to "Invoices", invoices_path %></li>
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-</body>
+    <div id="main-container" class="container">
+      <div class="row">
+      
+        <div class="col-xs-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class ="footer">
+    	<p><p>
+    </div>
+  </body>
 </html>

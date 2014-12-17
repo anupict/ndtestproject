@@ -1,2 +1,12 @@
-<h1>Staticpage#index</h1>
-<p>Find me in app/views/staticpage/index.html.erb</p>
+<h1>Welcome to NDTestDemo APP</h1>
+<p>This simple app makes your invoice management FUN!</p>
+
+
+<h3>Choose your Options !</h3>
+
+<ul>
+  <li><%= link_to "View Invoices", "invoices" %></li>
+  <li><%= link_to "View Customer List", "customers" %></li>
+  <li><%= link_to "Create Invoice", new_invoice_path %></li>
+  <li><%= link_to 'New Customer', new_customer_path %></li>
+</ul>

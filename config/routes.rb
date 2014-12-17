@@ -11,6 +11,8 @@ Rails.application.routes.draw do
    resources :invoices
    resources :invoice_items
 
+   get 'about/' => 'staticpage#about', as: :about
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
