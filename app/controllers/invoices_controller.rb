@@ -41,6 +41,27 @@ class InvoicesController < ApplicationController
         redirect_to @invoice, notice: 'Invoice was successfully deleted.'
   	end
 
+  	def email_pdf
+
+    begin
+      @invoice = Invoice.find(params[:id])
+
+      generate_pdf
+
+      InvoiceMailer.email_pdf(@invoice).deliver
+      	flash[:notice] = "Your email was sent."
+	    rescue ActiveRecord::RecordNotFound
+      	flash[:notice] = "Sorry, no such invoice found. Please check if that invoice exists."
+    	end
+
+	    if @invoice
+	      redirect_to @invoice
+	    else
+	      redirect_to :invoices
+	    end
+
+  	end
+
 	private
 
 	def find_invoice
@@ -50,5 +71,13 @@ class InvoicesController < ApplicationController
     def invoice_params
     	params.require(:invoice).permit(:id, :customer_id, :invoicenum,
                                       invoice_items_attributes: [:id, :invoice_id, :description, :qty, :price, :_destroy])
+    end
+
+    def generate_pdf
+      # pdf_invoice = render_to_string pdf: "your-invoice", file: "#{Rails.root}/invoices/" @invoice.id".pdf"
+      # save_path = Rails.root.join('tmp', 'pdfs', "your-invoice.pdf")
+      # File.open(save_path, 'wb') do |file|
+      #   file << pdf_invoice
+      # end
     end
 end

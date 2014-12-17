@@ -121,6 +121,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   pdfkit (~> 0.6.2)
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)

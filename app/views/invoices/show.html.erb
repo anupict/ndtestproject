@@ -55,4 +55,5 @@
 <%= link_to 'Edit Invoice', edit_invoice_path(@invoice) %> |
 <%= link_to 'Delete Invoice', @invoice, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'View All Invoices', invoices_path %> |
-<%= link_to "Download Invoice (PDF)", invoice_path(@invoice, :format => "pdf") %>
+<%= link_to "Download Invoice (PDF)", invoice_path(@invoice, :format => "pdf") %> |
+<%= link_to "Email Invoice as PDF", email_pdf_path(id: @invoice.id), class: "email-pdf" %>
