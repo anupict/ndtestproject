@@ -36,15 +36,15 @@
         
         <td class=""><%= item.description %></td>
         <td class="item-qty"><%= item.qty %></td>
-        <td class="item-price"><%= number_to_currency item.price, unit: "$" %></td>
-        <td class="item-total-price"><%= number_to_currency (item.price * item.qty), unit: "$" %></td>
+        <td class="item-price"><%= number_to_currency item.price, unit: "Rs." %></td>
+        <td class="item-total-price"><%= number_to_currency (item.price * item.qty), unit: "Rs." %></td>
       </tr>
     <% end %>
       
       <tr>
         <td colspan="3"></td>
         <td>Invoice Total:</td>
-        <td class="invoice-total"><%= number_to_currency @invoice.total, unit: "$" %></td>
+        <td class="invoice-total"><%= number_to_currency @invoice.total, unit: "Rs." %></td>
       </tr>
       
       <tr>
@@ -54,4 +54,5 @@
 
 <%= link_to 'Edit Invoice', edit_invoice_path(@invoice) %> |
 <%= link_to 'Delete Invoice', @invoice, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'View All Invoices', invoices_path %>
+<%= link_to 'View All Invoices', invoices_path %> |
+<%= link_to "Download Invoice (PDF)", invoice_path(@invoice, :format => "pdf") %>
