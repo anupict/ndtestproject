@@ -16,7 +16,11 @@ class Invoice < ActiveRecord::Base
 		end
 
     def self.search(search)
-    where("invoicenum::text LIKE ?", "%#{search}%") 
+      if connection.adapter_name == 'PostgreSQL'
+      where("invoicenum::text LIKE ?", "%#{search}%") 
+      else
+      where("invoicenum LIKE ?", "%#{search}%") 
+      end
     end
 
   	def total
