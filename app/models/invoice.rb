@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
 		end
 
     def self.search(search)
-    where("invoicenum LIKE ?", "%#{search}%") 
+    where("invoicenum::text LIKE ?", "%#{search}%") 
     end
 
   	def total
