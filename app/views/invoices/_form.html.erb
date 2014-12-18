@@ -19,7 +19,7 @@
     <%= select("invoice", "customer_id", Customer.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, { class: "form-control" }) %>
     <%= f.label :invoicenum %><br>
     <%#= f.number_field :invoicenum, :value => (Invoice.last.nil?) ? "1000" : ((Invoice.last.invoicenum.to_i) + 1).to_s %>
-    <%= @invoice.new_record? ? (f.number_field :invoicenum, :value => (Invoice.last.nil?) ? "1000" : ((Invoice.last.invoicenum.to_i) + 1).to_s) : @invoice.invoicenum %>
+    <%= @invoice.new_record? ? (f.number_field :invoicenum, :disabled=>true, :value => (Invoice.last.nil?) ? "1000" : ((Invoice.last.invoicenum.to_i) + 1).to_s) : @invoice.invoicenum %>
   </div>
 
  
